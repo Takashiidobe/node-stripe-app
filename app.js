@@ -1,11 +1,14 @@
+import keys from './keys/keys.json';
 //our publishable key
-const keyPublishable = 'pk_test_lPckb8OdcoW8owD1OJSJsZdS';
+const keyPublishable = keys.keysPublishable;
 //our secret key
-const keySecret = 'sk_test_5YtQcI9RPTsbr1LPcdscp2EA';
+const keySecret = keys.keySecret;
 //we need pug to render this
 const pug = require('pug');
 const ejs = require('ejs');
 //web developer's website
+
+const port = process.env.PORT || 4567;
 
 //instantiate app
 const app = require('express')();
@@ -116,4 +119,6 @@ stripe.invoices.create({
 })
 
 
-app.listen(4567);
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`)
+});
