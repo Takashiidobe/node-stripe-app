@@ -1,4 +1,4 @@
-import keys from './keys/keys.json';
+const keys = require('./keys/keys.json');
 //our publishable key
 const keyPublishable = keys.keysPublishable;
 //our secret key
@@ -27,9 +27,9 @@ app.get('/', (req, res) => {
 //this works if we are posting for one id
 //three blocks of code to charge per item
 app.post('/charge/item/1', (req, res, next) => {
-  console.log('Item 1 was bought');
-  //these are our amounts to charge
   let amount = 2000;
+  console.log(`Item 1 was bought for ${amount}`);
+  //these are our amounts to charge
   
   stripe.customers.create({
     email: req.body.stripeEmail,
@@ -50,9 +50,8 @@ app.post('/charge/item/1', (req, res, next) => {
 });
 
 app.post('/charge/item/2', (req, res, next) => {
-  console.log("Item 2 was bought");
-
   let amount = 4000;
+  console.log(`Item 2 was bought for ${amount}`);
 
   stripe.customers.create({
     email: req.body.stripeEmail,
@@ -74,9 +73,8 @@ app.post('/charge/item/2', (req, res, next) => {
 })
 
 app.post('/charge/item/3', (req, res, next) => {
-  console.log("Item 3 was bought");
-
   let amount = 6000;
+  console.log(`Item 3 was bought for ${amount}`);
 
   stripe.customers.create({
     email: req.body.stripeEmail,
